@@ -6,6 +6,6 @@
 ### Example
 
 ```ts
-import { Mvc } from "https://deno.land/x/mvc@v0.0.1/mod.ts";
+import { Mvc } from "https://deno.land/x/mvc@v0.0.3/mod.ts";
 new Mvc();
 ```
