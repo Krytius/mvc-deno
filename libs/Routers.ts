@@ -3,13 +3,15 @@ import {exists, expandGlobSync} from "https://deno.land/std@0.79.0/fs/mod.ts";
 export class Routers {
 
     private app;
+    private dir;
 
-    constructor(app: any) {
+    constructor(app: any, dir: any) {
         this.app = app;
+        this.dir = dir;
     }
 
-    async start() {
-        let path: string = Deno.cwd().toString().concat('/controllers');
+    async start(port: number) {
+        let path: string = this.dir.toString().concat('/controllers');
         if (exists(path)) {
             for (const file of expandGlobSync(path.concat("/**/*.ts"))) {
                 let url: string = file.path.replace(path, '').replace('.ts', '').toLowerCase();
@@ -46,6 +48,7 @@ export class Routers {
             }
         }
 
-        this.app.listen(3000);
+        console.log(`Service run port: ${port}`);
+        this.app.listen(port);
     }
 }
