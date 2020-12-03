@@ -9,7 +9,7 @@
 
 ```ts
 import {opine} from "https://deno.land/x/opine@0.26.0/mod.ts";
-import {Mvc} from "https://deno.land/x/mvc@v0.0.7/mod.ts";
+import {Mvc} from "https://deno.land/x/mvc@v0.0.10/mod.ts";
 
 let app = opine();
 let mvc = new Mvc(app, Deno.cwd());
@@ -29,7 +29,7 @@ Example:
 Controller Structure:
 
 ```ts
-import {ControllerInterface} from "https://deno.land/x/mvc@v0.0.8/mod.ts";
+import {ControllerInterface} from "https://deno.land/x/mvc@v0.0.10/mod.ts";
 
 export class Game implements ControllerInterface {
 
@@ -101,7 +101,7 @@ All routes are created in lower case.
 The middleware attribute of the class is a reserved attribute. If it is a public api, just make the attribute null.
 
 ```ts
-import {ControllerInterface} from "https://deno.land/x/mvc@v0.0.8/mod.ts";
+import {ControllerInterface} from "https://deno.land/x/mvc@v0.0.10/mod.ts";
 
 export class Game implements ControllerInterface {
     
