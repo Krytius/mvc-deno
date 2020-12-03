@@ -17,24 +17,31 @@ export class Routers {
                 let keys = Object.keys(controller);
                 let ctr = new controller[keys[0]]();
 
-                if(typeof ctr.get === 'function') {
-                    this.app.get(url, ctr.get);
+                let middleware = (req: any, res: any, next: any) => {
+                    next();
+                };
+                if (typeof ctr.middleware === "function") {
+                    middleware = ctr.middleware;
                 }
 
-                if(typeof ctr.getItem === 'function') {
-                    this.app.get(url.concat('/:id'), ctr.getItem);
+                if (typeof ctr.get === 'function') {
+                    this.app.get(url, middleware, ctr.get);
                 }
 
-                if(typeof ctr.post === 'function') {
-                    this.app.post(url, ctr.post);
+                if (typeof ctr.getItem === 'function') {
+                    this.app.get(url.concat('/:id'), middleware, ctr.getItem);
                 }
 
-                if(typeof ctr.delete === 'function') {
-                    this.app.delete(url, ctr.delete);
+                if (typeof ctr.post === 'function') {
+                    this.app.post(url, middleware, ctr.post);
                 }
 
-                if(typeof ctr.put === 'function') {
-                    this.app.put(url, ctr.put);
+                if (typeof ctr.delete === 'function') {
+                    this.app.delete(url, middleware, ctr.delete);
+                }
+
+                if (typeof ctr.put === 'function') {
+                    this.app.put(url, middleware, ctr.put);
                 }
             }
         }

@@ -1,2 +1,2 @@
+export type { ControllerInterface } from "./interfaces.ts";
 export { Mvc } from "./main.ts";
-export { ControllerInterface } from "./Controller.Interface.ts";
