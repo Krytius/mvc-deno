@@ -27,23 +27,28 @@ export class Mvc {
                 }
 
                 if (typeof ctr.get === 'function') {
+                    console.log(`GET: ${url}`);
                     this.app.get(url, middleware, ctr.get);
                 }
 
                 if (typeof ctr.getItem === 'function') {
+                    console.log(`GET: ${url.concat('/:id')}`);
                     this.app.get(url.concat('/:id'), middleware, ctr.getItem);
                 }
 
                 if (typeof ctr.post === 'function') {
+                    console.log(`POST: ${url}`);
                     this.app.post(url, middleware, ctr.post);
                 }
 
                 if (typeof ctr.delete === 'function') {
-                    this.app.delete(url, middleware, ctr.delete);
+                    console.log(`DELETE: ${url.concat('/:id')}`);
+                    this.app.delete(url.concat('/:id'), middleware, ctr.delete);
                 }
 
                 if (typeof ctr.put === 'function') {
-                    this.app.put(url, middleware, ctr.put);
+                    console.log(`PUT: ${url.concat('/:id')}`);
+                    this.app.put(url.concat('/:id'), middleware, ctr.put);
                 }
             }
         }
