@@ -12,12 +12,10 @@ export class Mvc {
 
     async start(port: number) {
         let path: string = this.dir.toString().concat('/controllers');
-        console.log(path);
         if (exists(path)) {
             for (const file of expandGlobSync(path.concat("/**/*.ts"))) {
                 let url: string = file.path.replace(path, '').replace('.ts', '').toLowerCase();
-                console.log(file.path);
-                let controller = await import(file.path);
+                let controller = await import('file:///'.concat(file.path));
                 let keys = Object.keys(controller);
                 let ctr = new controller[keys[0]]();
 
