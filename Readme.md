@@ -6,6 +6,9 @@
 ### Example
 
 ```ts
-import { Mvc } from "https://deno.land/x/mvc@v0.0.7/mod.ts";
-let mvc = new Mvc(Deno.cwd(), 3000);
+import {opine} from "https://deno.land/x/opine@0.26.0/mod.ts";
+import {Mvc} from "https://deno.land/x/mvc@v0.0.7/mod.ts";
+let app = opine();
+let mvc = new Mvc(app, Deno.cwd());
+await mvc.start(3000);
 ```
